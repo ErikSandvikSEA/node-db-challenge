@@ -1,6 +1,5 @@
 
 exports.seed = function(knex) {
-  // Deletes ALL existing entries
   return knex('projects').insert([
     {
       //id: 1
