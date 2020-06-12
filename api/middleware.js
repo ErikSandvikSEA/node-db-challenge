@@ -1,5 +1,3 @@
-
-
 function requiredProperty(property){
      return (req, res, next) => {
        if(!req.body[property]){

@@ -20,6 +20,11 @@ router.get('/', (req, res) => {
      })
 })
 
+router.get('/:id', validateProjectId, (req, res) => {
+     const project = req.project
+     res.status(200).json(project)
+   });
+
 //POSTs
 router.post(
      '/', 
@@ -30,7 +35,7 @@ router.post(
                .then(postedNewProjectId => {
                     res.status(201).json({
                          message: 'New Project Added',
-                         newProjectId: postedNewProjectId
+                         newProject: postedNewProjectId
                     })
                })
                .catch(err => {
@@ -41,5 +46,25 @@ router.post(
                })
      }
 )
+
+
+//middleware
+function validateProjectId(req, res, next) {
+     Projects.findById('projects', req.params.id)
+       .then(project => {
+         if(project) {
+           req.project = project
+           next()
+         } else {
+           res.status(404).json({ message: 'Post not found, sry' })
+         }
+       })
+       .catch(err => {
+         console.log(error)
+         res.status(500).json({
+           message: 'Error retrieving the user'
+         })
+       })
+ }
 
 module.exports = router

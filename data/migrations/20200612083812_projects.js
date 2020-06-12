@@ -31,11 +31,6 @@ exports.up = function(knex) {
                .references('projects.name')
                .onDelete('RESTRICT')
                .onUpdate('CASCADE')
-          tbl
-               .string('project_description')
-               .references('projects.description')
-               .onDelete('RESTRICT')
-               .onUpdate('CASCADE')
         })
      //-----------PROJECT LINE ITEMS-------------
         .createTable('project_line_items', tbl => {

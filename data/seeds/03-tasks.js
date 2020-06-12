@@ -7,7 +7,6 @@ exports.seed = function(knex) {
       notes: 'Careful not to scratch up the truck bed',
       project_id: 1,
       project_name: 'Dump Run',
-      project_description: 'We have a lot of stuff in the garage that needs to be thrown out'
     },
     {
       //id: 2
@@ -15,7 +14,6 @@ exports.seed = function(knex) {
       notes: 'Usually costs about $30',
       project_id: 1,
       project_name: 'Dump Run',
-      project_description: 'We have a lot of stuff in the garage that needs to be thrown out'
     },
     {
       //id 3
@@ -23,7 +21,6 @@ exports.seed = function(knex) {
       notes: 'Be sure to tie the bags when full',
       project_id: 2,
       project_name: 'Rake Leaves',
-      project_description: 'The lawn is looking HORRIBLE! We need those leaves raked!'
     },
     {
       //id 4
@@ -31,7 +28,6 @@ exports.seed = function(knex) {
       notes: 'Make sure it not to tip it over!',
       project_id: 2,
       project_name: 'Rake Leaves',
-      project_description: 'The lawn is looking HORRIBLE! We need those leaves raked!'
     },
   ])
 };
