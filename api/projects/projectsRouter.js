@@ -20,10 +20,18 @@ router.get('/', (req, res) => {
      })
 })
 
-router.get('/:id', validateProjectId, (req, res) => {
-     const project = req.project
-     res.status(200).json(project)
-   });
+// router.get('/:id', validateProjectId, (req, res) => {
+//      const project = req.project
+//      res.status(200).json(project)
+//    });
+
+   router.get('/:id', (req, res) => {
+        const projectId = req.params.id
+        Projects.getByIdWithDetail(projectId)
+          .then(project => {
+               res.json(project)
+          })
+   })
 
 //POSTs
 router.post(

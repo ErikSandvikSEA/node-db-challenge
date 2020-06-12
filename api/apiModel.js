@@ -10,6 +10,25 @@ function findById(tableName, id) {
        .first();
    }
 
+async function getByIdWithDetail(id){
+     const resources = await db('project_line_items as li')
+          .where('li.project_id', id)
+          .join('resources', 'resources.id', '=', 'li.resource_id')
+          .select('resources.name', 'resources.description');
+
+     const project = await db('projects')
+          .where('projects.id', id)
+          .select('projects.id', 'projects.name', 'projects.description', 'projects.completed?')
+
+     return {
+          id,
+          name: project[0].name,
+          description: project[0].description,
+          resources
+     }
+}
+
+
 function insert(tableName, newEntity) {
      return db(tableName)
        .insert(newEntity)
@@ -19,5 +38,6 @@ function insert(tableName, newEntity) {
 module.exports = {
      find,
      insert,
-     findById
+     findById,
+     getByIdWithDetail
 }
