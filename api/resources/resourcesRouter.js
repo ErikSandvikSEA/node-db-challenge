@@ -1,20 +1,20 @@
 const express = require('express')
-const Projects = require('../apiModel')
+const Resources = require('../apiModel')
 
 const router = express.Router()
 
 //GETs
 router.get('/', (req, res) => {
-     Projects.find('projects')
-     .then(projects => {
+     Resources.find('resources')
+     .then(resources => {
           res.json({
-               projects,
+               resources,
                message: 'Successfully got'
           })
      })
      .catch(err => {
           res.status(500).json({
-               message: 'Failed to retrieve projects'
+               message: 'Failed to retrieve resources'
           })
      })
 })
